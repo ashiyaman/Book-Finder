@@ -1,0 +1,53 @@
+/****************CSS reset***************/
+html,
+body,
+div,
+p,
+img,
+h1, h2, h3, h4, h5, h6,
+input, button{
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*********Basic styles *********************/
+
+body{
+  background-color: #4887b0;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/************* Individual styles ********************/
+.search-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30%;
+  height: 100%;
+  width: 100%;
+}
+
+h1{
+  text-transform: uppercase;
+}
+
+form{
+  margin: 10% 0;
+  width: 90%;
+}
+
+form * {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+form input {
+  width: 70%;
+}
+
+button {
+  background-color: #8e8741;
+  color: inherit;
+}
