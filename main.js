@@ -19,7 +19,6 @@ let booksContainer = (items) =>{
 
 /*********************** individual book template *******************************/
 let createBookTemplate = (item) =>{
-  console.log(item);
   let parentBookElement = document.createElement('div');
   parentBookElement.setAttribute('class', 'parentBook');
 

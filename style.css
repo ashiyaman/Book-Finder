@@ -44,6 +44,7 @@ h1{
 
 form{
   margin: 10% 0;
+  text-align: center;
   width: 80%;
 }
 
@@ -86,4 +87,27 @@ button{
 
 .title {
   color: #9b9b9e;
+}
+
+/************************ Media queries ***********************/
+
+@media only screen and (min-width: 630px){
+  .search-container{
+    margin-top: 10%;
+  }
+  .display-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .parentBook{
+    max-width: 40%;
+  }
+}
+
+@media only screen and (min-width: 900px){
+  .parentBook{
+    max-width: 30%;
+  }
 }
