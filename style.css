@@ -19,13 +19,20 @@ body{
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
+.float-right{
+  float: right;
+}
+
 /************* Individual styles ********************/
-.search-container {
+.search-container{
   align-items: center;
   display: flex;
   flex-direction: column;
   margin-top: 30%;
-  height: 100%;
   width: 100%;
 }
 
@@ -33,21 +40,50 @@ h1{
   text-transform: uppercase;
 }
 
+/********** Query container ***********************/
+
 form{
   margin: 10% 0;
-  width: 90%;
+  width: 80%;
 }
 
-form * {
+form input{
   border-radius: 5px;
+  min-width: 70%;
   padding: 10px;
 }
 
-form input {
-  width: 70%;
+button{
+  background-color: #8e8741;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
 }
 
-button {
-  background-color: #8e8741;
-  color: inherit;
+/***************** Display books ******************/
+
+.parentBook{
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #a1a1a2;
+  display: flex;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.bookInfo{
+  padding-left: 10px;
+  text-align: left;
+}
+
+.bookInfo *{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.title {
+  color: #9b9b9e;
 }
