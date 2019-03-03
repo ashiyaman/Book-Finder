@@ -42,13 +42,13 @@ h1{
 
 /********** Query container ***********************/
 
-form{
+#form{
   margin: 10% 0;
   text-align: center;
   width: 80%;
 }
 
-form input{
+#form input{
   border-radius: 5px;
   min-width: 70%;
   padding: 10px;
@@ -100,7 +100,6 @@ button{
     flex-direction: row;
     flex-wrap: wrap;
   }
-
   .parentBook{
     max-width: 40%;
   }

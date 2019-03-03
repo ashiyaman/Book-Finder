@@ -1,3 +1,14 @@
+/******************* handle when user presses enter key in search bar **********************/
+let handleKey = () =>{
+  let inputElement = document.querySelector('#query');
+  inputElement.addEventListener('keypress', function(event){
+    if (event.key === 'Enter'){
+      event.preventDefault();
+      searchBooks();
+    }
+  })
+}
+
 /******************* search for books using fetch api ********************/
 
 let searchBooks = () =>{

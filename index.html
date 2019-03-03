@@ -11,10 +11,10 @@
     <section class='search-container flex'>
       <h1>Book Finder</h1>
       <!--search for books-->
-      <form>
-        <input id='query' type='text' placeholder='Search by book title or author' />
-        <button type='button' name='button' onclick='searchBooks()'>Search</button>
-      </form>
+      <div id='form'>
+        <input required id='query' type='text' onkeypress='handleKey()' placeholder='Search by book title or author' />
+        <button type='button' onclick='searchBooks()'>Search</button>
+      </div>
     </section>
     <section class='display-container hidden'>
 
