@@ -16,6 +16,7 @@ let searchBooks = () =>{
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${QUERY}`)
     .then (res => res.json())
     .then (data => booksContainer(data.items))
+    .catch(error => toggleErrorBox());
 }
 
 /******************** display books container  **********************/
@@ -66,4 +67,11 @@ let createBookTemplate = (item) =>{
 
 let viewBook = () =>{
   console.log('here');
+}
+
+/********************* Toggle error modal box **********************/
+
+let toggleErrorBox = () =>{
+  let errorElement = document.querySelector('#errorModal');
+  errorElement.classList.toggle('hidden');
 }

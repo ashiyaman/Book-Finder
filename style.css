@@ -89,6 +89,31 @@ button{
   color: #9b9b9e;
 }
 
+/**************Error modal box styles **************************/
+#errorModal{
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal-content{
+  background-color: #fff;
+  border-radius: 5px;
+  color: #000;
+  left: 10%;
+  padding: 4em;
+  position: absolute;
+  text-align: center;
+  top: 35%;
+}
+
+.modal-content *{
+  padding: 1em;
+}
+
 /************************ Media queries ***********************/
 
 @media only screen and (min-width: 630px){
