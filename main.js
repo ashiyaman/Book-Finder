@@ -2,6 +2,10 @@
 let handleKey = () =>{
   let inputElement = document.querySelector('#query');
   inputElement.addEventListener('keypress', function(event){
+    /********* remove validation only if present***************/
+    if (inputElement.classList.contains('input-validation')){
+      toggleHide('.blank-validation');
+    }
     if (event.key === 'Enter'){
       event.preventDefault();
       searchBooks();
@@ -13,46 +17,59 @@ let handleKey = () =>{
 
 let searchBooks = () =>{
   const QUERY = document.querySelector('#query').value;
+  /**********handle validation***********/
+  if (QUERY === '' || QUERY === 'undefined'){
+    toggleHide('.blank-validation');
+    return;
+  }
+
   fetch(`https://www.googleapis.com/books/v1/volumes?q=${QUERY}`)
     .then (res => res.json())
     .then (data => booksContainer(data.items))
-    .catch(error => toggleErrorBox());
+    .catch(error => toggleHide('#errorModal'));
 }
 
 /******************** display books container  **********************/
 let booksContainer = (items) =>{
   let displayBookElement = document.querySelector('.display-container');
   displayBookElement.classList.remove('hidden');
-  items.forEach ((item, index) =>{
-    let bookTemplate = createBookTemplate(item.volumeInfo);
+  items.forEach ((book, index) =>{
+    let bookTemplate = createBookTemplate(book.volumeInfo);
     displayBookElement.appendChild(bookTemplate);
   })
 }
 
 /*********************** individual book template *******************************/
-let createBookTemplate = (item) =>{
+let createBookTemplate = (bookInfo) =>{
+  console.log(bookInfo);
   let parentBookElement = document.createElement('div');
   parentBookElement.setAttribute('class', 'parentBook');
 
   let imageElement = document.createElement('img');
-  imageElement.setAttribute('src', item.imageLinks.thumbnail);
+  imageElement.setAttribute('src', bookInfo.imageLinks.thumbnail);
 
   let bookInfoElement = document.createElement('div');
   bookInfoElement.setAttribute('class', 'bookInfo');
 
   let bookTitleElement = document.createElement('h3');
-  bookTitleElement.innerHTML = item.title;
+  bookTitleElement.innerHTML = bookInfo.title;
   bookTitleElement.setAttribute('class', 'title');
 
   let bookAuthorElement = document.createElement('P');
-  bookAuthorElement.innerHTML = 'By: ' + item.authors;
+  bookAuthorElement.innerHTML = 'By: ' + bookInfo.authors;
 
   let bookPublisherElement = document.createElement('p');
-  bookPublisherElement.innerHTML = 'Published By: ' + item.publisher;
+  bookPublisherElement.innerHTML = 'Published By: ' + bookInfo.publisher;
 
   let bookInfoButton = document.createElement('button');
+  let moreBookInfo = {title: bookInfo.title,
+                      image: bookInfo.imageLinks.thumbnail,
+                      author: bookInfo.authors,
+                      category: bookInfo.categories,
+                      pageCount: bookInfo.pageCount,
+                      description: bookInfo.description};
   bookInfoButton.innerHTML = 'See this book';
-  bookInfoButton.setAttribute('click', 'viewBook()');
+  bookInfoButton.onclick = viewBook.bind(this, moreBookInfo);
   bookInfoButton.setAttribute('class', 'float-right');
 
   bookInfoElement.appendChild(bookTitleElement);
@@ -65,13 +82,24 @@ let createBookTemplate = (item) =>{
   return parentBookElement;
 }
 
-let viewBook = () =>{
-  console.log('here');
+let viewBook = (info) =>{
+  console.log(info);
+  toggleHide('.book-container');
+  let bookContainerElement = document.querySelector('.book-container');
+  bookContainerElement.querySelector('img').setAttribute('src', info.image);
+  bookContainerElement.querySelector('.book-title').innerHTML = info.title;
+  bookContainerElement.querySelector('.author').innerHTML += info.author;
+  bookContainerElement.querySelector('.category').innerHTML += info.category;
+  bookContainerElement.querySelector('.page-count').innerHTML += info.pageCount;
+  bookContainerElement.querySelector('.description').innerHTML = info.description;
 }
 
-/********************* Toggle error modal box **********************/
+/********************* Toggle hidden element **********************/
 
-let toggleErrorBox = () =>{
-  let errorElement = document.querySelector('#errorModal');
-  errorElement.classList.toggle('hidden');
+let toggleHide = (element) =>{
+  let toggleElement = document.querySelector(element);
+  if (element === '.blank-validation'){
+    document.querySelector('#query').classList.toggle('input-validation');
+  }
+  toggleElement.classList.toggle('hidden');
 }

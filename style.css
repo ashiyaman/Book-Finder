@@ -89,8 +89,20 @@ button{
   color: #9b9b9e;
 }
 
+/**********styles for validating input*******************/
+.blank-validation{
+  color: red;
+  font-size: 14px;
+  padding: 1em 2em;
+  text-align: left;
+}
+
+.input-validation{
+  border: 2px solid red;
+}
+
 /**************Error modal box styles **************************/
-#errorModal{
+.modal{
   background: rgba(0, 0, 0, 0.5);
   height: 100%;
   left: 0;
@@ -114,9 +126,37 @@ button{
   padding: 1em;
 }
 
+/***************Book modal **************************/
+.book-container {
+  overflow: auto;
+}
+.book-container .modal-content {
+  display: flex;
+  font-size: 0.9em;
+  left: 10%;
+  padding: 1em;
+  text-align: left;
+  top: 10%;
+  width: 80%;
+}
+.book-container img {
+  height: fit-content;
+}
+.book-container .flex * {
+  padding: 0.3em;
+}
+.book-container .flex button{
+  padding: 0.8em;
+}
 /************************ Media queries ***********************/
+@media only screen and (max-width: 420px){
+  .modal-content{
+    left: 5%;
+  }
+}
 
 @media only screen and (min-width: 630px){
+  /******** display books **********/
   .search-container{
     margin-top: 10%;
   }
@@ -128,10 +168,29 @@ button{
   .parentBook{
     max-width: 40%;
   }
+  .blank-validation{
+    padding: 1em 3.5em;
+  }
+  /*********display error modal box************/
+  .modal-content{
+    left: 20%;
+  }
 }
 
 @media only screen and (min-width: 900px){
+  .search-container{
+    margin-top: 5%;
+  }
+  #form {
+    margin: 5% 0%;
+  }
   .parentBook{
     max-width: 30%;
+  }
+  .blank-validation{
+    padding: 1em 6.5em;
+  }
+  .modal-content{
+    left: 30%;
   }
 }

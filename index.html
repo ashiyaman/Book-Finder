@@ -12,16 +12,32 @@
       <h1>Book Finder</h1>
       <!--search for books-->
       <div id='form'>
-        <input required id='query' type='text' onkeypress='handleKey()' placeholder='Search by book title or author' />
-        <button type='button' onclick='searchBooks()'>Search</button>
+        <input id='query' type='text' onkeydown='handleKey()' placeholder='Search by book title or author'>
+        <button id='submitButton' type='button' onclick='searchBooks()'>Search</button>
+        <div class='blank-validation hidden'>
+          <p>Please enter book or author name to search</p>
+        </div>
       </div>
     </section>
     <section class='display-container hidden'>
     </section>
-    <section id='errorModal' class='hidden'>
+    <section class='book-container modal hidden'>
+      <div class='modal-content'>
+        <img />
+        <div class='flex'>
+          <h2 class='book-title'></h2>
+          <p class='author'>By: </p>
+          <p class='category'>Category: </P>
+          <p class='page-count'>Page Count:</p>
+          <p class='description'></p>
+          <button type='button' class='float-right' onclick='toggleHide(".book-container")'>Back</button>
+        </div>
+      </div>
+    </section>
+    <section id='errorModal' class='modal hidden'>
       <div class='modal-content'>
         <p>Sorry something went wrong</p>
-        <button onclick='toggleErrorBox()'>Try Again</button>
+        <button onclick='toggleHide("#errorModal")'>Try Again</button>
       </div>
     </section>
   </body>
