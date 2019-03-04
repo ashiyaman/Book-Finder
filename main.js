@@ -41,7 +41,6 @@ let booksContainer = (items) =>{
 
 /*********************** individual book template *******************************/
 let createBookTemplate = (bookInfo) =>{
-  console.log(bookInfo);
   let parentBookElement = document.createElement('div');
   parentBookElement.setAttribute('class', 'parentBook');
 
@@ -83,7 +82,6 @@ let createBookTemplate = (bookInfo) =>{
 }
 
 let viewBook = (info) =>{
-  console.log(info);
   toggleHide('.book-container');
   let bookContainerElement = document.querySelector('.book-container');
   bookContainerElement.querySelector('img').setAttribute('src', info.image);
